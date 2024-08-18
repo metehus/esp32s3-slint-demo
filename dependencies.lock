@@ -1,0 +1,29 @@
+dependencies:
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    source:
+      type: service
+    version: 0.5.3
+  espressif/esp_lcd_gc9a01:
+    component_hash: 9a6877a69d44729fa3f4aa6fa462cf1a9b47cd16d737e1a5191e5cf78437c7ee
+    source:
+      type: service
+    version: 2.0.0
+  espressif/esp_lcd_touch:
+    component_hash: 779b4ba2464a3ae85681e4b860caa5fdc35801458c23f3039ee761bae7f442a4
+    source:
+      type: service
+    version: 1.1.2
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 5.3.0
+  slint/slint:
+    component_hash: 02b065b43506beef22684934e5183f1431df93099a0243ff220a5ce3b2c93537
+    source:
+      type: service
+    version: 1.7.2
+manifest_hash: da2e045276fcb8f91cef03bac42025a5e85501e3672ce5e268c794f4502af7da
+target: esp32
+version: 1.0.0

@@ -80,11 +80,7 @@ extern "C" void app_main(void)
     // };
     const esp_lcd_panel_dev_config_t panel_config = {
             .reset_gpio_num = -1,      // Set to -1 if not use
-//#if ESP_IDF_VERSION < ESP_IDF_VERSION_VAL(5, 0, 0)
-//            .color_space = ESP_LCD_COLOR_SPACE_RGB,
-//#else
-            .rgb_endian = LCD_RGB_ENDIAN_RGB,
-//#endif
+            .rgb_ele_order = LCD_RGB_ELEMENT_ORDER_RGB,
             .bits_per_pixel = 16,                           // Implemented by LCD command `3Ah` (16/18)
             // .vendor_config = &vendor_config,            // Uncomment this line if use custom initialization commands
     };
@@ -99,14 +95,16 @@ extern "C" void app_main(void)
 
     ESP_ERROR_CHECK(esp_lcd_panel_mirror(panel_handle, true, false));
     /* Allocate a drawing buffer */
-    std::vector<slint::platform::Rgb565Pixel> buffer(EXAMPLE_LCD_H_RES * EXAMPLE_LCD_H_RES);
+    std::vector<slint::platform::Rgb565Pixel> buffer1(EXAMPLE_LCD_H_RES * EXAMPLE_LCD_H_RES);
+//    std::vector<slint::platform::Rgb565Pixel> buffer2(EXAMPLE_LCD_H_RES * EXAMPLE_LCD_H_RES);
 
     /* Initialize Slint's ESP platform support*/
     slint_esp_init(SlintPlatformConfiguration {
             .size = slint::PhysicalSize({ EXAMPLE_LCD_H_RES, EXAMPLE_LCD_H_RES }),
             .panel_handle = panel_handle,
 //            .touch_handle = touch_handle,
-            .buffer1 = buffer,
+            .buffer1 = buffer1,
+//            .buffer2 = buffer2,
 
             .color_swap_16 = false });
 

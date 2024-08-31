@@ -1,0 +1,61 @@
+import { VerticalBox, AboutSlint, ProgressIndicator } from "std-widgets.slint";
+export component MainWindow inherits Window {
+    width: 240px;
+    height: 240px;
+
+    property <duration> loading_animation_duration: 0ms;
+
+    init => {
+        r1.y = 200px;
+        r2.y = 0px;
+        r3.y = 200px;
+    }
+
+    VerticalBox {
+        alignment: center;
+        ProgressIndicator {
+            visible: true;
+            indeterminate: true;
+            height: 10px;
+        }
+    }
+
+    r1 := Rectangle {
+        background: red;
+        width: 60px;
+        height: 60px;
+        y: 20px;
+        x: 0;
+        animate y {
+            easing: ease-in-out;
+            iteration-count: -1;
+            duration: 1200ms;
+        }
+    }
+
+    r2 := Rectangle {
+            background: green;
+            width: 60px;
+            height: 60px;
+            y: 200px;
+            x: 88px;
+            animate y {
+                easing: ease-in-out;
+                iteration-count: -1;
+                duration: 1200ms;
+            }
+        }
+
+        r3 := Rectangle {
+                background: blue;
+                width: 60px;
+                height: 60px;
+                y: 20px;
+                x: 170px;
+                animate y {
+                    easing: ease-in-out;
+                    iteration-count: -1;
+                    duration: 1200ms;
+                }
+            }
+}

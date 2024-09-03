@@ -1,0 +1,55 @@
+import { CircularPath } from "../components/circular-path.slint";
+import { BackgroundGradient } from "../components/background-gradient.slint";
+import { Slider } from "std-widgets.slint";
+
+export component MainView {
+    width: 240px;
+    height: 240px;
+
+    private property <float> progress: 0;
+
+    private property <length> arc-padding: 20px;
+    private property <float> arc-width: 22;
+    private property <float> arc-spacing: 0.18;
+
+    BackgroundGradient {}
+
+    CircularPath {
+        width: root.width - arc-padding;
+        height: root.height - arc-padding;
+        fill: #303030;
+        start: 0.5 + arc-spacing / 2;
+        progress: 1- arc-spacing;
+        inner-radius: 50 - (arc-width / 240 * 50);
+    }
+    CircularPath {
+        width: root.width - arc-padding;
+        height: root.height - arc-padding;
+        fill: #55CCFF;
+        start: 0.5 + arc-spacing / 2;
+        progress: 1- arc-spacing - clamp(s.value / 100, 0, 1 - arc-spacing);
+        inner-radius: 50 - (arc-width / 240 * 50);
+    }
+    
+    VerticalLayout {
+        alignment: center;
+        Text {
+            font-size: 50px;
+            horizontal-alignment: center;
+            text: "20º";
+        }
+    }
+    VerticalLayout {
+        alignment: center;
+        padding-top: 90px;
+        Text {
+                font-size: 20px;
+                horizontal-alignment: center;
+                text: "20º";
+            }
+
+            s := Slider {
+                maximum: 100 - arc-spacing * 100;
+            }
+    }
+}
